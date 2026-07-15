@@ -30,8 +30,15 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files (never commit secrets)
 .env*
+!.env.example
+
+# database files (local dev only)
+db/*.db
+db/*.db-journal
+*.sqlite
+*.sqlite3
 
 # vercel
 .vercel
@@ -52,3 +59,22 @@ prompt
 server.log
 # Skills directory
 /skills/
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+Thumbs.db
+
+# Local scripts/infra
+.zscripts/dev.pid
+*.pid
+
+# Download screenshots (local-only verification artifacts)
+download/*.png
+download/*.jpg
+download/*.jpeg
+download/*.webp
