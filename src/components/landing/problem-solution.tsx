@@ -51,7 +51,7 @@ const solutions = [
 
 export function ProblemSolution() {
   return (
-    <section id="problem" className="relative py-24 lg:py-32">
+    <section id="problem" className="relative py-24 lg:py-32 font-thasans">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal className="text-center mb-16">
           <span className="inline-block text-sm font-semibold text-brand-600 mb-3">
