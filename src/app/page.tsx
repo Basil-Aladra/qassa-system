@@ -1,0 +1,31 @@
+import { Navbar } from "@/components/landing/navbar";
+import { Hero } from "@/components/landing/hero";
+import { ProblemSolution } from "@/components/landing/problem-solution";
+import { Features } from "@/components/landing/features";
+import { HowItWorks } from "@/components/landing/how-it-works";
+import { FormulaEngine } from "@/components/landing/formula-engine";
+import { Security } from "@/components/landing/security";
+import { Stats } from "@/components/landing/stats";
+import { Pricing } from "@/components/landing/pricing";
+import { FinalCTA } from "@/components/landing/final-cta";
+import { Footer } from "@/components/landing/footer";
+
+export default function Home() {
+  return (
+    <div className="min-h-screen flex flex-col bg-background">
+      <Navbar />
+      <main className="flex-1">
+        <Hero />
+        <ProblemSolution />
+        <Features />
+        <HowItWorks />
+        <FormulaEngine />
+        <Security />
+        <Stats />
+        <Pricing />
+        <FinalCTA />
+      </main>
+      <Footer />
+    </div>
+  );
+}
