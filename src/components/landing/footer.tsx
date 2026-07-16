@@ -1,6 +1,6 @@
 "use client";
 
-import { Calculator, Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Calculator } from "lucide-react";
 
 const footerLinks = [
   {
@@ -26,7 +26,6 @@ const footerLinks = [
     links: [
       { label: "مركز المساعدة", href: "#" },
       { label: "الأسئلة الشائعة", href: "#" },
-      { label: "تواصل عبر واتساب", href: "#contact" },
       { label: "تسجيل الدخول", href: "#" },
     ],
   },
@@ -39,13 +38,6 @@ const footerLinks = [
       { label: "اتفاقية الخدمة", href: "#" },
     ],
   },
-];
-
-const socialLinks = [
-  { icon: Twitter, href: "#", label: "تويتر" },
-  { icon: Linkedin, href: "#", label: "لينكدإن" },
-  { icon: Github, href: "#", label: "جيتهاب" },
-  { icon: Mail, href: "#contact", label: "بريد" },
 ];
 
 export function Footer() {
@@ -81,18 +73,15 @@ export function Footer() {
               بنظام ذكي يحسب قصات الألمنيوم تلقائيًا — بدقة، سرعة، وعزل كامل بين
               المشاغل.
             </p>
-            {/* Social Links */}
-            <div className="flex items-center gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="flex items-center justify-center w-9 h-9 rounded-xl bg-zinc-800/50 text-zinc-400 hover:text-brand-400 hover:bg-zinc-800 transition-all duration-300 hover:scale-110 hover:-translate-y-0.5"
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-4 h-4" />
-                </a>
-              ))}
+            {/* Contact Info */}
+            <div className="flex items-center gap-3 mb-6 p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800/50">
+              <span className="text-sm font-medium text-white">واتساب:</span>
+              <a
+                href="https://wa.me/972568353362"
+                className="text-brand-400 hover:text-brand-300 transition-colors font-semibold"
+              >
+                +972 56-835-3362
+              </a>
             </div>
           </div>
 
