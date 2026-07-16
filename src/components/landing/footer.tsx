@@ -1,6 +1,6 @@
 "use client";
 
-import { Calculator, Heart, Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Calculator, Github, Linkedin, Twitter, Mail } from "lucide-react";
 
 const footerLinks = [
   {
@@ -81,12 +81,6 @@ export function Footer() {
               بنظام ذكي يحسب قصات الألمنيوم تلقائيًا — بدقة، سرعة، وعزل كامل بين
               المشاغل.
             </p>
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-xs text-zinc-500">مصنوع بكل</span>
-              <Heart className="w-4 h-4 text-brand-500 fill-current" />
-              <span className="text-xs text-zinc-500">في فلسطين</span>
-            </div>
-
             {/* Social Links */}
             <div className="flex items-center gap-3">
               {socialLinks.map((social) => (
@@ -130,16 +124,6 @@ export function Footer() {
         <div className="mt-16 pt-8 border-t border-zinc-800/50 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="text-xs text-zinc-500">
             © {new Date().getFullYear()} قَصّة — جميع الحقوق محفوظة.
-          </div>
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2 text-xs text-zinc-500">
-              <div className="w-2.5 h-2.5 rounded-full bg-brand-500 shadow-lg shadow-brand-500/50 animate-pulse" />
-              <span>الخدمة تعمل — Vercel + Supabase</span>
-            </div>
-            <div className="h-4 w-px bg-zinc-700" />
-            <div className="text-xs text-zinc-500">
-              صادق تكنولوجي دائمًا
-            </div>
           </div>
         </div>
       </div>

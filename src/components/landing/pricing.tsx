@@ -5,7 +5,6 @@ import { useState } from "react";
 import { Check, Star, ArrowLeft, Zap, Crown, Building2 } from "lucide-react";
 import { Reveal, RevealStagger, RevealItem } from "./reveal";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 type Billing = "monthly" | "yearly";
 
@@ -18,15 +17,15 @@ const plans = [
     monthly: 99,
     yearly: 990,
     currency: "₪",
-    color: "from-zinc-500 to-zinc-700",
+    color: "from-zinc-600 to-zinc-800",
     accent: "bg-zinc-100 text-zinc-700 border-zinc-200",
     popular: false,
     features: [
       { text: "حتى ٥ مشاريع نشطة", included: true },
       { text: "حتى ٥ قوالب مخصصة", included: true },
-      { text: "محرك معادلات كامل + Sandbox", included: true },
-      { text: "تصدير PDF و Excel وطباعة", included: true },
-      { text: "أرشفة للأنظمة والقوالب", included: true },
+      { text: "محرك معادلات كامل", included: true },
+      { text: "تصدير PDF فقط", included: true },
+      { text: "أرشفة للأنظمة والقوالب", included: false },
       { text: "عزل كامل بين المشاغل (RLS)", included: true },
       { text: "دعم عبر واتساب", included: true },
       { text: "مستخدمون متعددون للمشغل", included: false },
@@ -44,18 +43,18 @@ const plans = [
     yearly: 1990,
     currency: "₪",
     color: "from-brand-600 to-emerald-700",
-    accent: "bg-brand-100 text-brand-700 border-brand-200",
+    accent: "bg-brand-50 text-brand-700 border-brand-200",
     popular: true,
     features: [
       { text: "مشاريع غير محدودة", included: true },
       { text: "حتى ٢٠ قالبًا مخصصًا", included: true },
-      { text: "محرك معادلات كامل + Sandbox", included: true },
+      { text: "محرك معادلات كامل", included: true },
       { text: "تصدير PDF و Excel وطباعة", included: true },
       { text: "أرشفة كاملة + سجل التغييرات", included: true },
       { text: "عزل كامل بين المشاغل (RLS)", included: true },
       { text: "دعم عبر واتساب + هاتف", included: true },
-      { text: "حتى ٣ مستخدمين للمشغل", included: true },
-      { text: "قوالب جاهزة مسبقًا (نوافذ، أبواب)", included: true },
+      { text: "حتى ٣ مستخدمين للمشغل", included: false },
+      { text: "قوالب جاهزة مسبقًا (نوافذ، أبواب)", included: false },
       { text: "دعم أولوية خلال ٢٤ ساعة", included: false },
     ],
     cta: "الأكثر اختيارًا",
@@ -68,19 +67,19 @@ const plans = [
     monthly: 399,
     yearly: 3990,
     currency: "₪",
-    color: "from-gold-600 to-amber-700",
-    accent: "bg-gold-100 text-gold-700 border-gold-200",
+    color: "from-amber-600 to-yellow-700",
+    accent: "bg-amber-50 text-amber-700 border-amber-200",
     popular: false,
     features: [
       { text: "مشاريع غير محدودة", included: true },
       { text: "قوالب مخصصة غير محدودة", included: true },
-      { text: "محرك معادلات كامل + Sandbox", included: true },
+      { text: "محرك معادلات كامل", included: true },
       { text: "تصدير PDF و Excel وطباعة", included: true },
       { text: "أرشفة كاملة + سجل التغييرات", included: true },
       { text: "عزل كامل بين المشاغل (RLS)", included: true },
       { text: "دعم مخصص ٢٤/٧", included: true },
-      { text: "مستخدمون غير محدودين للمشغل", included: true },
-      { text: "قوالب جاهزة + استيراد مخصص", included: true },
+      { text: "مستخدمون غير محدودين للمشغل", included: false },
+      { text: "امكانية عمل القوالب من قبلنا", included: true },
       { text: "دعم أولوية فورية + تدريب", included: true },
     ],
     cta: "تواصل معنا",
@@ -113,27 +112,27 @@ export function Pricing() {
 
         {/* Billing toggle */}
         <Reveal delay={0.1} className="flex justify-center mb-12">
-          <div className="inline-flex items-center gap-1 p-1 rounded-full bg-muted border border-border">
+          <div className="inline-flex items-center gap-1 p-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-zinc-200/80 shadow-xl">
             <button
               onClick={() => setBilling("monthly")}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
+              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
                 billing === "monthly"
-                  ? "bg-white text-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "bg-gradient-to-r from-brand-600 to-emerald-600 text-white shadow-lg"
+                  : "text-zinc-600 hover:text-foreground"
               }`}
             >
               شهري
             </button>
             <button
               onClick={() => setBilling("yearly")}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all flex items-center gap-2 ${
+              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all flex items-center gap-2 duration-300 ${
                 billing === "yearly"
-                  ? "bg-white text-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "bg-gradient-to-r from-brand-600 to-emerald-600 text-white shadow-lg"
+                  : "text-zinc-600 hover:text-foreground"
               }`}
             >
               سنوي
-              <span className="text-[10px] bg-brand-100 text-brand-700 px-1.5 py-0.5 rounded-full font-bold">
+              <span className="text-[10px] bg-brand-100 text-brand-700 px-2 py-1 rounded-full font-bold shadow-inner">
                 وفّر شهرين
               </span>
             </button>
@@ -141,71 +140,63 @@ export function Pricing() {
         </Reveal>
 
         <RevealStagger
-          className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
-          stagger={0.12}
+          className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+          stagger={0.15}
         >
           {plans.map((plan) => (
             <RevealItem key={plan.id}>
               <motion.div
-                whileHover={{ y: -8 }}
+                whileHover={{ y: -12, scale: plan.popular ? 1.07 : 1.03 }}
                 transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                className={`relative h-full rounded-3xl bg-white border-2 p-6 sm:p-8 flex flex-col ${
+                className={`relative h-full rounded-3xl flex flex-col ${
                   plan.popular
-                    ? "border-brand-500 shadow-2xl shadow-brand-600/15 lg:scale-105"
-                    : "border-border shadow-sm hover:border-brand-300/60 hover:shadow-lg"
-                } transition-all duration-300`}
+                    ? "bg-gradient-to-b from-white via-brand-50/30 to-white border-2 border-brand-500 shadow-2xl shadow-brand-600/20"
+                    : "bg-white/80 backdrop-blur-sm border border-zinc-200/80 hover:border-brand-300/60 shadow-xl hover:shadow-2xl hover:shadow-brand-600/10"
+                } transition-all duration-500`}
               >
                 {plan.popular && (
-                  <div className="absolute -top-4 right-1/2 translate-x-1/2">
-                    <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-l from-brand-600 to-emerald-600 text-white text-xs font-bold shadow-lg">
-                      <Star className="w-3.5 h-3.5 fill-current" />
+                  <div className="absolute -top-5 right-1/2 translate-x-1/2">
+                    <div className="flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-brand-600 via-emerald-600 to-brand-600 text-white text-xs font-bold shadow-lg shadow-brand-600/30">
+                      <Star className="w-4 h-4 fill-current" />
                       الأكثر اختيارًا
                     </div>
                   </div>
                 )}
 
                 {/* Header */}
-                <div className="mb-6">
-                  <div className="flex items-center gap-3 mb-3">
+                <div className="mb-8 p-6 sm:p-8">
+                  <div className="flex items-center gap-4 mb-5">
                     <div
-                      className={`grid place-items-center w-12 h-12 rounded-xl bg-gradient-to-br ${plan.color} text-white shadow-lg`}
+                      className={`grid place-items-center w-14 h-14 rounded-2xl bg-gradient-to-br ${plan.color} text-white shadow-xl shadow-brand-600/25`}
                     >
-                      <plan.icon className="w-6 h-6" strokeWidth={2} />
+                      <plan.icon className="w-7 h-7" strokeWidth={2} />
                     </div>
                     <div>
-                      <h3 className="font-display text-xl font-bold text-foreground">
+                      <h3 className="font-display text-2xl font-extrabold text-foreground">
                         {plan.name}
                       </h3>
-                      <Badge
-                        variant="outline"
-                        className={`text-[10px] font-semibold ${plan.accent}`}
-                      >
-                        {plan.tagline.length > 25
-                          ? plan.tagline.slice(0, 25) + "..."
-                          : plan.tagline}
-                      </Badge>
                     </div>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-base text-muted-foreground leading-relaxed">
                     {plan.tagline}
                   </p>
                 </div>
 
                 {/* Price */}
-                <div className="mb-6 pb-6 border-b border-border">
-                  <div className="flex items-baseline gap-1.5">
-                    <span className="text-4xl font-extrabold text-foreground font-mono">
+                <div className="px-6 sm:px-8 mb-8 pb-8 border-b border-zinc-200/80">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-5xl font-extrabold text-foreground font-mono tracking-tight">
                       {billing === "monthly" ? plan.monthly : plan.yearly}
                     </span>
-                    <span className="text-lg font-bold text-muted-foreground">
+                    <span className="text-xl font-bold text-brand-600">
                       {plan.currency}
                     </span>
-                    <span className="text-sm text-muted-foreground">
+                    <span className="text-base text-muted-foreground">
                       /{billing === "monthly" ? "شهر" : "سنة"}
                     </span>
                   </div>
                   {billing === "yearly" && (
-                    <div className="mt-1 text-xs text-brand-700 font-semibold">
+                    <div className="mt-2 text-sm text-brand-700 font-semibold">
                       يعادل{" "}
                       {Math.round(plan.yearly / 12)}{" "}
                       {plan.currency}/شهر — وفّر{" "}
@@ -216,43 +207,45 @@ export function Pricing() {
                 </div>
 
                 {/* CTA */}
-                <Button
-                  className={`w-full mb-6 font-semibold ${
-                    plan.popular
-                      ? "bg-brand-600 hover:bg-brand-700 text-white shadow-lg shadow-brand-600/30"
-                      : "bg-foreground hover:bg-foreground/90 text-background"
-                  }`}
-                  size="lg"
-                >
-                  {plan.cta}
-                  <ArrowLeft className="w-4 h-4 mr-1" />
-                </Button>
+                <div className="px-6 sm:px-8 mb-8">
+                  <Button
+                    className={`w-full font-semibold py-6 text-base rounded-2xl transition-all duration-300 ${
+                      plan.popular
+                        ? "bg-gradient-to-r from-brand-600 to-emerald-600 hover:from-brand-700 hover:to-emerald-700 text-white shadow-xl shadow-brand-600/30"
+                        : "bg-foreground hover:bg-foreground/90 text-background"
+                    }`}
+                    size="lg"
+                  >
+                    {plan.cta}
+                    <ArrowLeft className="w-5 h-5 mr-2" />
+                  </Button>
+                </div>
 
                 {/* Features */}
-                <ul className="space-y-3 flex-1">
+                <ul className="space-y-3.5 px-6 sm:px-8 pb-8 flex-1">
                   {plan.features.map((f, i) => (
                     <motion.li
                       key={i}
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: 0.2 + i * 0.04 }}
-                      className="flex items-start gap-2.5 text-sm"
+                      transition={{ delay: 0.2 + i * 0.05 }}
+                      className="flex items-start gap-3 text-sm"
                     >
                       {f.included ? (
-                        <span className="grid place-items-center w-5 h-5 rounded-full bg-brand-100 text-brand-700 flex-shrink-0 mt-0.5">
-                          <Check className="w-3 h-3" strokeWidth={3} />
+                        <span className="grid place-items-center w-6 h-6 rounded-full bg-gradient-to-br from-brand-100 to-brand-200 text-brand-700 flex-shrink-0 mt-0.5 shadow-inner">
+                          <Check className="w-3.5 h-3.5" strokeWidth={3} />
                         </span>
                       ) : (
-                        <span className="grid place-items-center w-5 h-5 rounded-full bg-muted text-muted-foreground/50 flex-shrink-0 mt-0.5">
-                          <span className="text-xs">—</span>
+                        <span className="grid place-items-center w-6 h-6 rounded-full bg-zinc-100 text-zinc-400 flex-shrink-0 mt-0.5">
+                          <span className="text-xs font-medium">—</span>
                         </span>
                       )}
                       <span
                         className={
                           f.included
-                            ? "text-foreground"
-                            : "text-muted-foreground/60"
+                            ? "text-foreground font-medium"
+                            : "text-muted-foreground/50"
                         }
                       >
                         {f.text}
@@ -266,37 +259,40 @@ export function Pricing() {
         </RevealStagger>
 
         {/* Bottom note */}
-        <Reveal delay={0.3} className="mt-12 text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-6 px-6 py-4 rounded-2xl bg-white border border-border shadow-sm">
-            <div className="text-sm text-muted-foreground">
-              تحتاج خطة مخصصة لمشغل كبير؟
+        <Reveal delay={0.3} className="mt-16">
+          <div className="text-center">
+            <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-8 px-8 py-5 rounded-2xl bg-white/80 backdrop-blur-sm border border-zinc-200/80 shadow-xl">
+              <div className="text-base text-muted-foreground">
+                تحتاج خطة مخصصة لمشغل كبير؟
+              </div>
+              <Button
+                variant="outline"
+                className="border-2 border-brand-300 text-brand-700 hover:bg-brand-50 hover:border-brand-400 font-semibold px-6 py-3 rounded-xl transition-all duration-300"
+              >
+                تواصل مع فريق المبيعات
+              </Button>
             </div>
-            <Button
-              variant="outline"
-              className="border-brand-300 text-brand-700 hover:bg-brand-50 font-semibold"
-            >
-              تواصل مع فريق المبيعات
-            </Button>
           </div>
         </Reveal>
 
         {/* Trust badges */}
-        <Reveal delay={0.4} className="mt-10">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <Reveal delay={0.4} className="mt-16">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {[
-              { label: "تفعيل خلال", value: "٢٤ ساعة" },
-              { label: "بدون رسوم", value: "خفية" },
-              { label: "إلغاء", value: "في أي وقت" },
-              { label: "دفع آمن", value: "محلي ودولي" },
+              { label: "تفعيل خلال", value: "٢٤ ساعة", icon: "⚡" },
+              { label: "بدون رسوم", value: "خفية", icon: "🔒" },
+              { label: "إلغاء", value: "في أي وقت", icon: "🔄" },
+              { label: "دفع آمن", value: "محلي ودولي", icon: "💳" },
             ].map((item, i) => (
               <div
                 key={i}
-                className="text-center p-3 rounded-xl bg-white/60 border border-border/60"
+                className="text-center p-5 rounded-2xl bg-white/70 backdrop-blur-sm border border-zinc-200/80 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <div className="text-sm font-bold text-brand-700">
+                <div className="text-2xl mb-2">{item.icon}</div>
+                <div className="text-lg font-bold text-brand-700">
                   {item.value}
                 </div>
-                <div className="text-xs text-muted-foreground">
+                <div className="text-xs text-muted-foreground font-medium">
                   {item.label}
                 </div>
               </div>
