@@ -4,7 +4,6 @@ import { ProblemSolution } from "@/components/landing/problem-solution";
 import { Features } from "@/components/landing/features";
 import { HowItWorks } from "@/components/landing/how-it-works";
 import { FormulaEngine } from "@/components/landing/formula-engine";
-import { Security } from "@/components/landing/security";
 import { Stats } from "@/components/landing/stats";
 import { Pricing } from "@/components/landing/pricing";
 import { FinalCTA } from "@/components/landing/final-cta";
@@ -20,7 +19,6 @@ export default function Home() {
         <Features />
         <HowItWorks />
         <FormulaEngine />
-        <Security />
         <Stats />
         <Pricing />
         <FinalCTA />

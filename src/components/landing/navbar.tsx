@@ -9,7 +9,6 @@ const navLinks = [
   { label: "المميزات", href: "#features" },
   { label: "كيف يعمل", href: "#how-it-works" },
   { label: "محرك المعادلات", href: "#formula-engine" },
-  { label: "الأمان", href: "#security" },
   { label: "الأسعار", href: "#pricing" },
 ];
 
