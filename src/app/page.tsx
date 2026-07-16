@@ -6,7 +6,6 @@ import { HowItWorks } from "@/components/landing/how-it-works";
 import { FormulaEngine } from "@/components/landing/formula-engine";
 import { Stats } from "@/components/landing/stats";
 import { Pricing } from "@/components/landing/pricing";
-import { FinalCTA } from "@/components/landing/final-cta";
 import { Footer } from "@/components/landing/footer";
 
 export default function Home() {
@@ -21,7 +20,6 @@ export default function Home() {
         <FormulaEngine />
         <Stats />
         <Pricing />
-        <FinalCTA />
       </main>
       <Footer />
     </div>
