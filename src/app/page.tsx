@@ -2,7 +2,6 @@ import { Navbar } from "@/components/landing/navbar";
 import { Hero } from "@/components/landing/hero";
 import { ProblemSolution } from "@/components/landing/problem-solution";
 import { Features } from "@/components/landing/features";
-import { HowItWorks } from "@/components/landing/how-it-works";
 import { FormulaEngine } from "@/components/landing/formula-engine";
 import { Stats } from "@/components/landing/stats";
 import { Pricing } from "@/components/landing/pricing";
@@ -17,7 +16,6 @@ export default function Home() {
         <Hero />
         <ProblemSolution />
         <Features />
-        <HowItWorks />
         <FormulaEngine />
         <Stats />
         <Pricing />

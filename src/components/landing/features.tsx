@@ -11,10 +11,6 @@ import {
   Sparkles,
   FileCheck2,
   Zap,
-  Cpu,
-  Users,
-  Play,
-  ArrowLeft,
   type LucideIcon,
 } from "lucide-react";
 import { Reveal, RevealStagger, RevealItem } from "./reveal";
@@ -110,13 +106,6 @@ const features: Feature[] = [
   },
 ];
 
-const techStack = [
-  { icon: Cpu, label: "محرك المعادلات", value: "mathjs" },
-  { icon: Users, label: "عزل المشاغل", value: "RLS على DB" },
-  { icon: ShieldCheck, label: "صلاحيات الأدمن", value: "SECURITY DEFINER" },
-  { icon: Play, label: "اختبارات حقيقية", value: "Playwright" },
-];
-
 export function Features() {
   const reduceMotion = useReducedMotion();
 
@@ -165,84 +154,6 @@ export function Features() {
             </RevealItem>
           ))}
         </RevealStagger>
-
-        {/* Enhanced tech bar */}
-        <Reveal delay={0.2} className="mt-14">
-          <div className="relative">
-            {/* Glow background */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-brand-600/20 via-emerald-600/20 to-gold-600/20 rounded-3xl blur-xl opacity-60" />
-
-            <div className="relative bg-zinc-950 rounded-3xl p-6 sm:p-8 overflow-hidden">
-              {/* Subtle grid overlay */}
-              <div className="absolute inset-0 opacity-[0.03]">
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
-                    backgroundSize: "32px 32px",
-                  }}
-                />
-              </div>
-
-              <div className="relative flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-6">
-                {/* Left: label */}
-                <div className="flex items-center gap-3">
-                  <div className="grid place-items-center w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-emerald-600 text-white shadow-lg shadow-brand-500/30">
-                    <Cpu className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-zinc-500 font-medium">
-                      مبني على تقنيات
-                    </div>
-                    <div className="text-sm font-bold text-white">
-                      مؤسسية ومُختبَرة
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right: tech badges */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 lg:gap-6 flex-1 lg:max-w-3xl">
-                  {techStack.map((item, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.3 + i * 0.08 }}
-                      className="flex items-center gap-2.5 group cursor-default"
-                    >
-                      <div className="grid place-items-center w-9 h-9 rounded-lg bg-white/5 border border-white/10 group-hover:bg-brand-500/10 group-hover:border-brand-400/30 transition-colors">
-                        <item.icon className="w-4 h-4 text-brand-400" />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="text-[10px] text-zinc-500 uppercase tracking-wide leading-tight">
-                          {item.label}
-                        </div>
-                        <div className="text-xs font-bold text-white font-mono truncate">
-                          {item.value}
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-
-        {/* Bottom CTA strip */}
-        <Reveal delay={0.3} className="mt-10 text-center">
-          <a
-            href="#how-it-works"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800 group"
-          >
-            <span>شاهد كيف تعمل هذه المميزات معًا</span>
-            <span className="grid place-items-center w-7 h-7 rounded-full bg-brand-100 group-hover:bg-brand-600 group-hover:text-white text-brand-600 transition-colors">
-              <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
-            </span>
-          </a>
-        </Reveal>
       </div>
     </section>
   );
