@@ -101,8 +101,7 @@ export function Pricing() {
             الأسعار
           </span>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-4">
-            خطط تناسب{" "}
-            <span className="text-gradient-brand">كل مشغل</span>
+            خطط تناسب <span className="text-gradient-brand">كل مشغل</span>
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             أسعار شفافة بالشيكل، بدون رسوم خفية. اختر الخطة المناسبة لحجم مشغلك،
@@ -197,11 +196,8 @@ export function Pricing() {
                   </div>
                   {billing === "yearly" && (
                     <div className="mt-2 text-sm text-brand-700 font-semibold">
-                      يعادل{" "}
-                      {Math.round(plan.yearly / 12)}{" "}
-                      {plan.currency}/شهر — وفّر{" "}
-                      {plan.monthly * 12 - plan.yearly}{" "}
-                      {plan.currency}
+                      يعادل {Math.round(plan.yearly / 12)} {plan.currency}/شهر —
+                      وفّر {plan.monthly * 12 - plan.yearly} {plan.currency}
                     </div>
                   )}
                 </div>
@@ -279,10 +275,10 @@ export function Pricing() {
         <Reveal delay={0.4} className="mt-16">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {[
-              { label: "تفعيل خلال", value: "٢٤ ساعة", icon: "⚡" },
-              { label: "بدون رسوم", value: "خفية", icon: "🔒" },
-              { label: "إلغاء", value: "في أي وقت", icon: "🔄" },
-              { label: "دفع آمن", value: "محلي ودولي", icon: "💳" },
+              { label: "تفعيل خلال", value: "٢٤ ساعة", icon: "" },
+              { label: "بدون رسوم", value: "خفية", icon: "" },
+              { label: "إلغاء", value: "في أي وقت", icon: "" },
+              { label: "دفع آمن", value: "محلي ودولي", icon: "" },
             ].map((item, i) => (
               <div
                 key={i}
