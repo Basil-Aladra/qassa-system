@@ -7,6 +7,7 @@ import { FormulaEngine } from "@/components/landing/formula-engine";
 import { Stats } from "@/components/landing/stats";
 import { Pricing } from "@/components/landing/pricing";
 import { Footer } from "@/components/landing/footer";
+import { WhatsAppButton } from "@/components/landing/whatsapp-button";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <Pricing />
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }
