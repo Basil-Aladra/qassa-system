@@ -1,315 +1,272 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
+  ArrowLeft,
   Calculator,
-  Mail,
-  Phone,
-  MapPin,
-  Linkedin,
   Facebook,
   Instagram,
+  Linkedin,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+  Send,
+  ShieldCheck,
   Youtube,
-  ArrowUpRight,
-  X,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+
+const linkGroups = [
+  {
+    title: "المنتج",
+    ariaLabel: "روابط المنتج",
+    links: [
+      { label: "المميزات", href: "#features" },
+      { label: "كيف يعمل", href: "#how-it-works" },
+      { label: "محرك المعادلات", href: "#formula-engine" },
+      { label: "الأسعار", href: "#pricing" },
+    ],
+  },
+  {
+    title: "الشركة",
+    ariaLabel: "روابط الشركة",
+    links: [
+      { label: "من نحن", href: "#hero" },
+      { label: "العملاء", href: "#stats" },
+      { label: "الشراكات", href: "mailto:info@qassa.app" },
+      { label: "الوظائف", href: "mailto:info@qassa.app" },
+    ],
+  },
+  {
+    title: "الدعم",
+    ariaLabel: "روابط الدعم",
+    links: [
+      { label: "مركز المساعدة", href: "mailto:info@qassa.app" },
+      { label: "تواصل معنا", href: "#contact" },
+      { label: "واتساب", href: "https://wa.me/972568353362" },
+      { label: "طلب عرض", href: "#pricing" },
+    ],
+  },
+  {
+    title: "القانوني",
+    ariaLabel: "روابط قانونية",
+    links: [
+      { label: "الخصوصية", href: "#privacy" },
+      { label: "الشروط", href: "#terms" },
+      { label: "الأمان", href: "#security" },
+      { label: "ملفات الارتباط", href: "#cookies" },
+    ],
+  },
+];
+
+const contactLinks = [
+  {
+    label: "info@qassa.app",
+    href: "mailto:info@qassa.app",
+    icon: Mail,
+  },
+  {
+    label: "+972 56-835-3362",
+    href: "tel:+972568353362",
+    icon: Phone,
+  },
+  {
+    label: "فلسطين، القدس",
+    href: "https://maps.google.com/?q=Jerusalem%2C%20Palestine",
+    icon: MapPin,
+  },
+];
+
+const socialLinks = [
+  { label: "LinkedIn", href: "https://www.linkedin.com", icon: Linkedin },
+  { label: "Facebook", href: "https://www.facebook.com", icon: Facebook },
+  { label: "Instagram", href: "https://www.instagram.com", icon: Instagram },
+  { label: "YouTube", href: "https://www.youtube.com", icon: Youtube },
+];
 
 export function Footer() {
   return (
     <motion.footer
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 20 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="relative w-full"
+      id="contact"
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-120px" }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className="relative overflow-hidden bg-[#06120d] text-white"
+      aria-labelledby="footer-heading"
     >
-      {/* Enhanced Background */}
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        {/* Radial Gradient Glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(at_top_left,_var(--background)_0%,_rgba(34,197,94,0.08)_30%,_transparent_70%)]"></div>
-        
-        {/* Noise Texture */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><filter id=\"noiseFilter\"><feTurbulence type=\"fractalNoise\" baseFrequency=\"0.65\" numOctaves=\"3\" stitchTiles=\"stitch\"/></filter><rect width=\"100\" height=\"100\" filter=\"url(%23noiseFilter)\" opacity=\"0.03\"/></svg>')]"></div>
-        
-        {/* Decorative Elements */}
-        <div className="absolute top-1/4 left-1/6 w-20 h-20 bg-brand-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/3 right-1/5 w-24 h-24 bg-brand-600/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/5 right-1/4 w-16 h-16 bg-brand-400/10 rounded-full blur-2xl"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-2 h-24 bg-brand-500/5 opacity-20"></div>
-        <div className="absolute top-1/2 left-1/2 w-12 h-12 bg-brand-500/5 rounded-full blur-xl"></div>
-        
-        {/* Subtle Grid Lines */}
-        <div className="absolute inset-0 bg-[repeating-linear-gradient(0deg,transparent,transparent_1px,rgba(55,65,81,0.03)_1px,rgba(55,65,81,0.03)_2px)] opacity-30 pointer-events-none"></div>
-        
-        {/* Geometric Lines */}
-        <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_1px,rgba(34,197,94,0.02)_1px,rgba(34,197,94,0.02)_2px)] opacity-20 pointer-events-none"></div>
-      </div>
+      <div className="absolute inset-0 bg-grid-pattern opacity-20" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_15%,rgba(16,185,129,0.24),transparent_34%),radial-gradient(circle_at_18%_82%,rgba(251,191,36,0.12),transparent_28%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.045)_0_1px,transparent_1px_120px)]" />
+      <div className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.75)_1px,transparent_1px)] [background-size:18px_18px]" />
+      <div className="absolute -right-28 top-10 h-72 w-72 rounded-full bg-brand-500/20 blur-3xl" />
+      <div className="absolute -left-24 bottom-12 h-64 w-64 rounded-full bg-gold-400/10 blur-3xl" />
 
-      <div className="relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid md:grid-cols-4 gap-8">
-            {/* Logo & Description */}
-            <div className="md:col-span-2 space-y-6">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1, duration: 0.6 }}
-                className="flex items-center space-x-3"
-              >
-                <div className="relative w-10 h-10 flex items-center justify-center">
-                  <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 -z-0 blur-sm"></div>
-                  <div className="relative z-0 flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-brand-600 to-emerald-700 shadow-lg shadow-brand-600/30">
-                    <Calculator className="w-5 h-5 text-white" strokeWidth={2.5} />
-                  </div>
-                </div>
-                <div className="text-left">
-                  <p className="text-sm font-medium text-brand-600">
-                    منصة مشاغل الألمنيوم
-                  </p>
-                  <h3 className="text-xl font-bold text-white tracking-tight">
-                    قَصّة
-                  </h3>
-                </div>
-              </motion.div>
+      <div className="container relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
+        <div className="mb-12 grid gap-6 lg:grid-cols-[1.15fr_1.85fr]">
+          <section className="rounded-3xl border border-white/10 bg-white/[0.055] p-6 shadow-2xl shadow-black/25 backdrop-blur-xl sm:p-8">
+            <a
+              href="#hero"
+              className="group inline-flex items-center gap-3 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#06120d]"
+            >
+              <span className="relative grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 shadow-lg shadow-brand-500/30">
+                <Calculator className="h-6 w-6 text-white" strokeWidth={2.5} />
+                <span className="absolute inset-0 rounded-2xl ring-1 ring-white/25" />
+                <span className="absolute -inset-3 -z-10 rounded-full bg-brand-400/20 blur-xl transition-opacity duration-300 group-hover:opacity-70" />
+              </span>
+              <span className="flex flex-col leading-tight">
+                <span
+                  id="footer-heading"
+                  className="font-display text-2xl font-extrabold tracking-normal"
+                >
+                  قصّة
+                </span>
+                <span className="text-xs font-medium text-brand-200">
+                  منصة مشاغل الألمنيوم
+                </span>
+              </span>
+            </a>
 
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="text-sm text-zinc-400 leading-relaxed max-w-md"
+            <p className="mt-6 max-w-xl text-sm leading-7 text-zinc-300 sm:text-base">
+              نظام SaaS يساعد مشاغل الألمنيوم على إدارة المشاريع، القوالب،
+              المعادلات، وحساب قصات الألمنيوم تلقائيًا بدقة وسرعة.
+            </p>
+
+            <div className="mt-7">
+              <a
+                href="https://wa.me/972568353362"
+                className="group relative flex min-h-14 items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-l from-brand-500 via-emerald-500 to-brand-600 px-5 py-4 text-sm font-extrabold text-white shadow-xl shadow-brand-500/25 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:shadow-brand-400/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1b14]"
               >
-                منصة SaaS متكاملة لمشاغل الألمنيوم في فلسطين. نستبدل ملفات Excel بنظام ذكي يحسب قصات الألمنيوم تلقائيًا — بدقة، سرعة، وعزل كامل بين المشاغل.
+                <span className="absolute inset-y-0 -right-1/3 w-1/3 skew-x-12 bg-white/25 opacity-0 blur-sm transition-all duration-700 group-hover:right-full group-hover:opacity-100" />
+                <MessageCircle className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-0.5" />
+                <span>ابدأ الآن عبر واتساب</span>
+                <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
+              </a>
+              <p className="mt-3 flex items-center gap-2 text-xs font-semibold text-brand-100">
+                <span className="h-2 w-2 rounded-full bg-brand-300 shadow-[0_0_18px_rgba(110,231,183,0.9)]" />
+                نرد خلال دقائق.
               </p>
             </div>
+          </section>
 
-            {/* Product Links */}
-            <div className="space-y-4">
-              <motion.h3
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, duration: 0.6 }}
-                className="text-sm font-semibold text-white mb-2 uppercase tracking-wider"
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {linkGroups.map((group) => (
+              <nav
+                key={group.title}
+                aria-label={group.ariaLabel}
+                className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-md"
               >
-                المنتج
-              </motion.h3>
-              <motion.ul
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="space-y-2 text-sm text-zinc-400"
-              >
-                <li className="flex items-center gap-2 transition-all duration-300 hover:text-brand-400 hover:translate-x-1">
-                  <ArrowUpRight className="w-3 h-3 text-brand-400 transition-colors duration-300" />
-                  <a href="#features" className="hover:underline">المميزات</a>
-                </li>
-                <li className="flex items-center gap-2 transition-all duration-300 hover:text-brand-400 hover:translate-x-1">
-                  <ArrowUpRight className="w-3 h-3 text-brand-400 transition-colors duration-300" />
-                  <a href="#how-it-works" className="hover:underline">كيف يعمل</a>
-                </li>
-                <li className="flex items-center gap-2 transition-all duration-300 hover:text-brand-400 hover:translate-x-1">
-                  <ArrowUpRight className="w-3 h-3 text-brand-400 transition-colors duration-300" />
-                  <a href="#formula-engine" className="hover:underline">محرك المعادلات</a>
-                </li>
-                <li className="flex items-center gap-2 transition-all duration-300 hover:text-brand-400 hover:translate-x-1">
-                  <ArrowUpRight className="w-3 h-3 text-brand-400 transition-colors duration-300" />
-                  <a href="#pricing" className="hover:underline">الأسعار</a>
-                </li>
-              </motion.ul>
-            </div>
-
-            {/* Company Links */}
-            <div className="space-y-4">
-              <motion.h3
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, duration: 0.6 }}
-                className="text-sm font-semibold text-white mb-2 uppercase tracking-wider"
-              >
-                الشركة
-              </motion.h3>
-              <motion.ul
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="space-y-2 text-sm text-zinc-400"
-              >
-                <li className="flex items-center gap-2 transition-all duration-300 hover:text-brand-400 hover:translate-x-1">
-                  <ArrowUpRight className="w-3 h-3 text-brand-400 transition-colors duration-300" />
-                  <a href="#" className="hover:underline">من نحن</a>
-                </li>
-                <li className="flex items-center gap-2 transition-all duration-300 hover:text-brand-400 hover:translate-x-1">
-                  <ArrowUpRight className="w-3 h-3 text-brand-400 transition-colors duration-300" />
-                  <a href="#" className="hover:underline">المدونة</a>
-                </li>
-                <li className="flex items-center gap-2 transition-all duration-300 hover:text-brand-400 hover:translate-x-1">
-                  <ArrowUpRight className="w-3 h-3 text-brand-400 transition-colors duration-300" />
-                  <a href="#" className="hover:underline">الوظائف</a>
-                </li>
-                <li className="flex items-center gap-2 transition-all duration-300 hover:text-brand-400 hover:translate-x-1">
-                  <ArrowUpRight className="w-3 h-3 text-brand-400 transition-colors duration-300" />
-                  <a href="#contact" className="hover:underline">تواصل معنا</a>
-                </li>
-              </motion.ul>
-            </div>
-
-            {/* Support Links */}
-            <div className="space-y-4">
-              <motion.h3
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, duration: 0.6 }}
-                className="text-sm font-semibold text-white mb-2 uppercase tracking-wider"
-              >
-                الدعم
-              </motion.h3>
-              <motion.ul
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="space-y-2 text-sm text-zinc-400"
-              >
-                <li className="flex items-center gap-2 transition-all duration-300 hover:text-brand-400 hover:translate-x-1">
-                  <ArrowUpRight className="w-3 h-3 text-brand-400 transition-colors duration-300" />
-                  <a href="#" className="hover:underline">مركز المساعدة</a>
-                </li>
-                <li className="flex items-center gap-2 transition-all duration-300 hover:text-brand-400 hover:translate-x-1">
-                  <ArrowUpRight className="w-3 h-3 text-brand-400 transition-colors duration-300" />
-                  <a href="#" className="hover:underline">الأسئلة الشائعة</a>
-                </li>
-                <li className="flex items-center gap-2 transition-all duration-300 hover:text-brand-400 hover:translate-x-1">
-                  <ArrowUpRight className="w-3 h-3 text-brand-400 transition-colors duration-300" />
-                  <a href="#" className="hover:underline">الدعم الفني</a>
-                </li>
-              </motion.ul>
-            </div>
-
-            {/* Contact Section */}
-            <div className="space-y-4">
-              <motion.h3
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, duration: 0.6 }}
-                className="text-sm font-semibold text-white mb-2 uppercase tracking-wider"
-              >
-                تواصل معنا
-              </motion.h3>
-              
-              {/* WhatsApp CTA */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="flex items-center gap-3 p-4 bg-white/10 rounded-xl border border-white/20 backdrop-blur-sm hover:bg-white/15 transition-all duration-300"
-              >
-                <div className="flex items-center justify-center w-10 h-10 bg-brand-600/20 rounded-xl">
-                  <Whatsapp className="w-5 h-5 text-brand-600" />
-                </div>
-                <div className="space-y-1">
-                  <p className="text-sm font-semibold text-white">ابدأ الآن عبر واتساب</p>
-                  <p className="text-xs text-zinc-400">نرد خلال دقائق.</p>
-                </div>
-              </motion.div>
-              
-              {/* Contact Info */}
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 text-sm text-zinc-400 hover:text-brand-400 transition-colors duration-300">
-                  <MapPin className="w-4 h-4" />
-                  <span>فلسطين، القدس</span>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-zinc-400 hover:text-brand-400 transition-colors duration-300">
-                  <Phone className="w-4 h-4" />
-                  <span>+972 56-835-3362</span>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-zinc-400 hover:text-brand-400 transition-colors duration-300">
-                  <Mail className="w-4 h-4" />
-                  <span>info@qassa.app</span>
-                </div>
-              </div>
-              
-              {/* Social Media */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="flex gap-3"
-              >
-                <a href="#" className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-300">
-                  <Linkedin className="w-4 h-4 text-zinc-400 hover:text-brand-400" />
-                </a>
-                <a href="#" className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-300">
-                  <Facebook className="w-4 h-4 text-zinc-400 hover:text-brand-400" />
-                </a>
-                <a href="#" className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-300">
-                  <Instagram className="w-4 h-4 text-zinc-400 hover:text-brand-400" />
-                </a>
-                <a href="#" className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-300">
-                  <Youtube className="w-4 h-4 text-zinc-400 hover:text-brand-400" />
-                </a>
-              </motion.div>
-              
-              {/* Newsletter */}
-              <motion.form
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-                className="space-y-3 mt-4"
-              >
-                <div className="flex space-x-2">
-                  <Input
-                    type="email"
-                    placeholder="البريد الإلكتروني"
-                    className="flex-1 bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-zinc-400 focus:ring-2 focus:ring-brand-500/20 focus:border-transparent"
-                    aria-label="البريد الإلكتروني للنشرة البريدية"
-                  />
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="bg-white/10 hover:bg-white/20 text-white hover:text-brand-400 border border-white/20 hover:border-brand-400/50"
-                  >
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Button>
-                </div>
-                <p className="text-xs text-zinc-500">
-                  نرسل تحديثات شهرية فقط، لا spam.
-                </p>
-              </motion.form>
-            </div>
+                <h3 className="text-sm font-extrabold text-white">
+                  {group.title}
+                </h3>
+                <ul className="mt-4 space-y-3">
+                  {group.links.map((link) => (
+                    <li key={`${group.title}-${link.label}`}>
+                      <a
+                        href={link.href}
+                        className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-400 transition-all duration-200 hover:-translate-x-1 hover:text-brand-300 focus-visible:rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300"
+                      >
+                        <span className="h-px w-0 bg-brand-300 transition-all duration-200 group-hover:w-4" />
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            ))}
           </div>
-          
-          {/* Divider */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-            className="mt-12 pt-8 border-t border-white/10"
-          />
-          
-          {/* Bottom Section */}
-          <div className="flex flex-col-reverse md:flex-row md:items-center md:justify-between mt-10 pt-6 text-xs text-zinc-500">
-            <p className="text-center md:text-left">
-              © {new Date().getFullYear()} قَصّة — جميع الحقوق محفوظة.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center mt-4 md:mt-0">
-              <a href="#" className="hover:text-brand-400 transition-colors duration-300">الشروط والأحكام</a>
-              <a href="#" className="hover:text-brand-400 transition-colors duration-300">سياسة الخصوصية</a>
-              <a href="#" className="hover:text-brand-400 transition-colors duration-300">سياسة الإرجاع</a>
-              <a href="#" className="hover:text-brand-400 transition-colors duration-300">اتفاقية الخدمة</a>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
+          <section
+            aria-labelledby="contact-heading"
+            className="rounded-3xl border border-white/10 bg-white/[0.045] p-6 backdrop-blur-xl"
+          >
+            <div className="flex items-center gap-3">
+              <span className="grid h-10 w-10 place-items-center rounded-2xl bg-white/10 text-brand-300">
+                <ShieldCheck className="h-5 w-5" />
+              </span>
+              <div>
+                <h3 id="contact-heading" className="font-bold text-white">
+                  تواصل مباشر وواضح
+                </h3>
+                <p className="text-xs text-zinc-400">
+                  فريق محلي يفهم تفاصيل المشاغل ومراحل التسعير والتنفيذ.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-5 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+              {contactLinks.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="flex min-h-12 items-center gap-3 rounded-2xl border border-white/10 bg-black/15 px-4 py-3 text-sm text-zinc-300 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-300/40 hover:bg-brand-400/10 hover:text-brand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300"
+                >
+                  <item.icon className="h-4 w-4 shrink-0 text-brand-300" />
+                  <span className="truncate">{item.label}</span>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <section
+            aria-labelledby="newsletter-heading"
+            className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-xl shadow-black/10 backdrop-blur-xl"
+          >
+            <div className="grid gap-5 xl:grid-cols-[0.85fr_1.15fr] xl:items-end">
+              <div>
+                <h3 id="newsletter-heading" className="text-xl font-extrabold">
+                  ابقَ على اطلاع
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-zinc-400">
+                  تحديثات قصيرة حول المنتج، القوالب، وأفضل ممارسات إدارة
+                  المشاغل.
+                </p>
+              </div>
+
+              <form className="flex flex-col gap-3 sm:flex-row" action="#">
+                <label className="sr-only" htmlFor="footer-newsletter-email">
+                  البريد الإلكتروني
+                </label>
+                <input
+                  id="footer-newsletter-email"
+                  type="email"
+                  required
+                  placeholder="البريد الإلكتروني"
+                  className="h-12 min-w-0 flex-1 rounded-2xl border border-white/10 bg-black/20 px-4 text-sm text-white placeholder:text-zinc-500 outline-none transition-colors focus:border-brand-300 focus:ring-2 focus:ring-brand-300/30"
+                />
+                <button
+                  type="submit"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-2xl bg-white px-5 text-sm font-extrabold text-[#07130e] transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#06120d]"
+                >
+                  <Send className="h-4 w-4" />
+                  اشترك
+                </button>
+              </form>
+            </div>
+          </section>
+        </div>
+
+        <div className="mt-10 border-t border-white/10 pt-6">
+          <div className="flex flex-col gap-5 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
+            <p>© 2026 قصّة. جميع الحقوق محفوظة.</p>
+
+            <div className="flex items-center gap-2">
+              {socialLinks.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  aria-label={item.label}
+                  className="grid h-10 w-10 place-items-center rounded-2xl border border-white/10 bg-white/[0.04] text-zinc-400 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-300/40 hover:bg-brand-400/10 hover:text-brand-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300"
+                >
+                  <item.icon className="h-4 w-4" />
+                </a>
+              ))}
             </div>
           </div>
         </div>
       </div>
     </motion.footer>
-  );
-}
-
-// WhatsApp Icon Component (since it's not in Lucide by default)
-function Whatsapp() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M22 8.92c-1.45 4.73-5.25 8.16-10.15 8.16s-8.7-3.43-10.15-8.16C1.26 11.37 2 8.48 2 5.41 2 2.76 4.24 1 7 1c2.76 0 5.2 1.04 7.06 2.76l3.75-3.75 1.42 1.42-3.75 3.75c1.72 1.86 2.75 4.3 2.75 6.76 0 3.78-3 6.86-7 8.26v2.2l2.68-.02c3.42-.35 6.22-2.92 6.57-6.35.2-1.89-.2-3.82-.98-5.51z" fill="currentColor"/>
-      <circle cx="12" cy="12" r="3" fill="currentColor"/>
-    </svg>
   );
 }
